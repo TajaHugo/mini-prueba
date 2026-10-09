@@ -18,12 +18,12 @@ export default class DoctoresEspecialidad extends Component {
     state = {
         especialidad: [],
         idEspecialidad: "",
-        doctores : null
+        doctores: null
     }
 
     componentDidMount = () => {
         this.loadEspecialidad()
-        
+
     }
 
     buscarEspecialidad = () => {
@@ -36,6 +36,10 @@ export default class DoctoresEspecialidad extends Component {
         })
     }
 
+    loadDoctores = () => {
+
+    }
+
     render() {
         return (
             <div>
@@ -45,18 +49,29 @@ export default class DoctoresEspecialidad extends Component {
                 <form>
                     <label htmlFor="">Selecciona especialidad</label>
                     <select ref={this.EspecialidadDoc} name="" id="">
-                        <option value="">Selecciona una especialidad</option>
                         {
                             this.state.especialidad &&
-                            this.state.especialidad.map((e , i)=>{
-                                return(<option key={i}>{e}</option>)
+                            this.state.especialidad.map((e, i) => {
+                                return (<option key={i}>{e}</option>)
                             })
                         }
                     </select>
-                    <button type="button" onClick= {this.buscarEspecialidad} >Buscar Doctor</button>
+                    <button type="button" onClick={this.buscarEspecialidad} >Buscar Doctor</button>
                 </form>
                 {
-
+                    this.state.doctores &&
+                    <ul>
+                        {
+                            this.state.doctores.map((d, i) => {
+                                return (
+                                    <li key={i}>
+                                        {d.idDoctor} {d.apellido} {d.especialidad} {d.salario} {d.idHospital}
+                                    </li>
+                                )
+                            }
+                            )
+                        }
+                    </ul>
                 }
             </div>
         )
