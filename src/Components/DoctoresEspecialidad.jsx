@@ -36,10 +36,7 @@ export default class DoctoresEspecialidad extends Component {
         })
     }
 
-    loadDoctores = () => {
-
-    }
-
+    
     render() {
         return (
             <div>
